@@ -1,0 +1,24 @@
+function findSum (n) {
+    ans = 0;
+    for(let i = 0; i < n; i ++) {
+        ans = ans + i;
+    }
+    return ans;
+}
+
+function findSumtill1000() {
+    console.log(findSum(100));
+}
+// busy in this a bit
+function syncSleep() {
+    let ans = 1;
+    for (let i = 0; i < 1000000000; i ++) {
+        ans = ans + i;
+    }
+}
+
+
+// syncSleep();    it becomes synchronous at this code
+// findSumtill1000();
+setTimeout(findSumtill1000, 1000);
+console.log("hello world");
