@@ -1,0 +1,43 @@
+<html>
+    <script>
+        function populateDiv() {
+          const a = document.getElementById("firstNumber").value;
+          const b = document.getElementById("secondNumber").value;
+        // fetch is an asynchronous call
+          fetch("https://sum-server.100xdevs.com/sum?a="+ a + "&b=" + b)
+                .then(function(response) {
+  
+                    response.text()   //this is also promise
+                         .then(function(ans) {                     //this bunch of code gives back the actual data and not a object
+                            document.getElementById("finalsum").innerHTML = ans;   
+                         })
+                });
+          //whenever there is a promise, we add a .then because =>
+          //when the promise resolves is when we get back the data, is when we need do something with the final data
+          
+        }
+    </script>
+    <body>
+        <input id = "firstNumber" type = "text" placeholder = "First Number"></input>
+        <br></br>
+        <input id = "secondNumber" type = "text" placeholder = "Second Number"></input>
+        <br></br>
+        <button onclick = "populateDiv()">Calculate Sum</button>
+        <br></br>
+        <div id = "finalsum"></div>
+        
+       <!-- any time the button is clicked,its goes int the function populateDiv and i get the value a and b in
+         the currentinput boxes and i sent request to the https://sum-server.100xdevs.com/sum?a="+ a + "&b=" + b
+
+         How do i get the final response in a variable so i can out it here the div(final sum)
+       -->
+
+
+
+       <!-- This whole logic was not written on the frontend, i send a request to the backend, backend did the calculation
+    backend responded with the final answer -->
+    <!-- checkout axios library which is used to send request to a backend and get directly the output-->
+    </body>
+</html>
+
+
