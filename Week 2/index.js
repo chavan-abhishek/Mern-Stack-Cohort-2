@@ -1,18 +1,14 @@
-const express = require('express');
+const express = require('express')
 const app = express();
+const bodyParser = require('body-parser');
+const port = 3000
 
-function sum(n) {
-    let ans = 0;
-    for(let i = 0; i <=n; i++) {
-        ans = ans + i;
-    }
-    return ans;
-}
 
-app.get("/", function(req, res) {
-    const n = req.query.n;
-    const ans = sum(n);
-    res.send("hii your ans is "+ ans);
+app.use(bodyParser.json());
+app.get('/', function (req, res) {
+  res.send('Hello its cristiano ')
 })
 
-app.listen(3000);
+app.listen(port)
+
+//req  whenever there isa request on a specific port i will give you two arguments  req, res 
