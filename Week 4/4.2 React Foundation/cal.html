@@ -1,0 +1,55 @@
+<html>
+    <body>
+        <input type="text" id="title" placeholder="Enter title">
+        <input type="text" id="description" placeholder="Enter description">
+        <button onclick="addTodo()">Add Todo</button>
+
+        <ul id="todoList"></ul>
+
+        <script>
+            let globalId = 1;
+            let todoState = [];
+            let oldTodoState = [];
+
+            function addTodo() {
+                const title = document.getElementById("title").value;
+                const description = document.getElementById("description").value;
+                const todo = {
+                    title: title,
+                    description: description,
+                    id: globalId++,
+                    completed: false
+                };
+                todoState.push(todo);
+                renderTodoList();
+            }
+
+            function removeTodo(id) {
+                todoState = todoState.filter(todo => todo.id !== id);
+                renderTodoList();
+            }
+
+            function updateTodo(id) {
+                const index = todoState.findIndex(todo => todo.id === id);
+                todoState[index].completed = !todoState[index].completed;
+                renderTodoList();
+            }
+
+            function renderTodoList() {
+                const todoList = document.getElementById("todoList");
+                todoList.innerHTML = ""; // Clear the existing list
+
+                todoState.forEach(todo => {
+                    const todoItem = document.createElement("li");
+                    todoItem.innerHTML = `
+                        <input type="checkbox" onchange="updateTodo(${todo.id})" ${todo.completed ? "checked" : ""}>
+                        <span>${todo.title}</span>
+                        <span>${todo.description}</span>
+                        <button onclick="removeTodo(${todo.id})">Remove</button>
+                    `;
+                    todoList.appendChild(todoItem);
+                });
+            }
+        </script>
+    </body>
+</html>

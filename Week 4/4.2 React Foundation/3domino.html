@@ -1,0 +1,44 @@
+<html>
+    <script>
+        let globalId = 1;
+
+        function markAsDone(paraId) {
+            const parent = document.getElementById(paraId);
+            parent.children[2].innerHTML = "Done!";
+        }
+        
+        function createChild(paraTitle, paraDescription, paraId) {  // these are parameters, these take arguments from the function addTodo
+            const dhanraj = document.createElement("div"); // dhanraj is father of three childs
+            const firstGrand = document.createElement("div");
+            firstGrand.innerHTML = paraTitle;
+            const secondGrand = document.createElement("div");
+            secondGrand.innerHTML = paraDescription;
+            const thirdGrand = document.createElement("button");
+            thirdGrand.innerHTML = "Mark as Done";
+            thirdGrand.setAttribute("onclick", `markAsDone(${paraId})`)
+
+            dhanraj.appendChild(firstGrand); // here the three childs are appended to dhanraj
+            dhanraj.appendChild(secondGrand);
+            dhanraj.appendChild(thirdGrand);
+            dhanraj.setAttribute("id",paraId);
+            return dhanraj;
+        }
+
+        function addTodo() {
+            const title = document.getElementById("title").value;               // here we are creating the 3 values that are to be putted in the boxes
+            const description = document.getElementById("description").value;   //
+            const dadababu = document.getElementById("container");             //this the main parent div(dadababu) which has a son(dhanraj) appended to him AND 3 sub grandChilds which we append in DHANRAJ
+
+            // here dhanraj is being appended to dadababu
+            dadababu.appendChild(createChild(title, description, globalId++)); // this is what being passed as an argument to function createChild()
+        }      
+    </script>
+    <div>
+        <input id ="title" type = "text" placeholder="title"></input>
+        <br></br>
+        <input id ="description" type = "text" placeholder ="description"></input>
+        <br></br>
+        <button onclick = "addTodo()"> to do</button>
+    </div>
+    <div id = "container"></div>
+</html>

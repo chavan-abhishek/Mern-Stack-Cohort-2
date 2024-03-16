@@ -1,0 +1,9 @@
+What does React do?
+React calculates the difference
+
+What does React DOM do?
+React DOM is actually what tells React this is how you put things on the DOM, this is how u remove things
+
+What does React Native do?
+React Native tells React, this is how you put things in a native application and this is how you remove things 
+in a native application

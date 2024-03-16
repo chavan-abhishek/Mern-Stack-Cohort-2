@@ -1,0 +1,55 @@
+<html>
+    
+    <body>
+        <div>
+         <input id="title" type="text" placeholder="Title"></input>
+         <br></br>
+         <input id="description" type="text" placeholder="Description"></input>
+         <br></br>
+         
+        </div>
+        <div id="container"></div>
+
+        <script>
+            let globalId = 1;
+    
+            function createChild(paraTitle, paraDescription, paraId) {
+                const dhanraj = document.createElement("div");
+                const firstGrand = document.createElement("div");
+                firstGrand.innerHTML = paraTitle;
+                const secondGrand = document.createElement("div");
+                secondGrand.innerHTML = paraDescription;
+                const thirdGrand = document.createElement("button");
+                thirdGrand.innerHTML = "Mark As Done";
+               
+    
+                dhanraj.appendChild(firstGrand);
+                dhanraj.appendChild(secondGrand);
+                dhanraj.appendChild(thirdGrand);
+                dhanraj.setAttribute("id", paraId);
+                return dhanraj;
+            }
+            // State will always be an array
+            // Every elemnent of the state would have a title, description and id
+            
+            function updateDomAccToState(state) {
+                const parent = document.getElementById("container");
+                parent.innerHTML = "";
+                for(let i = 0; i < state.length; i++) {
+                    const child = createChild(state[i].title, state[i].description, state[i].id);
+                    parent.appendChild(child);
+                }
+            }
+            updateDomAccToState([{  // you have a dynamic frontend that does everything you want to do with a single function call
+                title: "go to gym",
+                description: "go to gym from 5 to 7",
+                id: 1
+            }, {
+                title: "go to gym 2",
+                description: "from 7 to 9",
+                id: 2
+            },])
+    
+        </script>
+    </body>
+</html>

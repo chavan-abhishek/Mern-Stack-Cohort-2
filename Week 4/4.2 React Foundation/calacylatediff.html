@@ -1,0 +1,47 @@
+<html>
+    <script>
+        let globalId = 1;
+        let todoState = [];
+        let oldTodoState = [];
+
+        function addTodo() {
+
+        }
+
+        function removeTodo(todo) {
+            const element = document.getElementById(todo.id);
+            element.parent.removeChild(element);
+        }
+
+        function updateTodo(oldTodo, newTodo) {
+            const element = document.getElementById(oldId.id);
+            element.children[0].innerHTML = newTodo.title;
+            element.children[1].innerHTML = newTodo.description;
+            element.children[0].innerHTML = newTodo.completed ? "Marl as done": "Done";
+        }
+
+        function updateState(newTodos) {
+            // caclculate the diff b/w newTodos and oldTodos.
+            // More specifically, find out what todos are - 
+            //1. added
+            //2. deleted
+            //3. updated
+            const added = [];
+            const deleted = [];
+            const updated = [];
+            // calculate these three arrays
+            // call addTodo, removeTodo, updateTodo functions of each of the elements
+        }
+
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            todoState.push({
+                title: title,
+                description: description,
+                id: globalId++,
+            })
+            updateState(todoState);
+        }
+    </script>
+</html>
