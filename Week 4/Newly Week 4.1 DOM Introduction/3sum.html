@@ -1,0 +1,16 @@
+<body>
+    <script>
+        function populateDiv() {
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+
+            const element = document.getElementById("finalSum");
+            element.innerHTML = parseInt(a) + parseInt(b); // .innerHTML is a way to put things in a div
+        }
+    </script>
+    <input id="firstNumber" type="text" placeholder="First Number"></input> <br></br>
+    <input id="secondNumber" type="text" placeholder="Second Number"></input> <br></br>
+    
+    <button onclick="populateDiv()">Calculate Sum</button>  <br></br>
+    <div id="finalSum"></div>
+</body>
